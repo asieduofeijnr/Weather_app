@@ -15,7 +15,7 @@ def home():
 
 
 @app.route("/api/v1/<station>/<date>")
-def about(station, date):
+def station_date_data(station, date):
     filename = "data_small\TG_STAID" + str(station).zfill(6) + ".txt"
     df = pd.read_csv(filename, skiprows=20, parse_dates=["    DATE"])
     df["TG0"] = df["   TG"].mask(df["   TG"] == -9999, np.nan)
@@ -23,6 +23,26 @@ def about(station, date):
     temperature = df.loc[df["    DATE"] == date]["real_TG"].squeeze()
     result_temperature = {"station": station, "date": date, "temperature": temperature}
     return result_temperature
+
+
+@app.route("/api/v1/yearly/<station>/<year>")
+def station_year(station, year):
+    filename = "data_small\TG_STAID" + str(station).zfill(6) + ".txt"
+    df = pd.read_csv(filename, skiprows=20, parse_dates=["    DATE"])
+    df["TG0"] = df["   TG"].mask(df["   TG"] == -9999, np.nan)
+    df["real_TG"] = df["TG0"] / 10
+    df["    DATE"] = df["    DATE"].astype(str)
+    result = df.loc[df["    DATE"].str.startswith(str(year))]
+    return result.to_dict(orient="records")
+
+
+@app.route("/api/v1/<station>")
+def station_data(station):
+    filename = "data_small\TG_STAID" + str(station).zfill(6) + ".txt"
+    df = pd.read_csv(filename, skiprows=20, parse_dates=["    DATE"])
+    df["TG0"] = df["   TG"].mask(df["   TG"] == -9999, np.nan)
+    result = df["real_TG"] = df["TG0"] / 10
+    return df.to_dict(orient="records")
 
 
 @app.route("/contact-us/")
