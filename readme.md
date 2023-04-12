@@ -25,19 +25,19 @@ The following endpoints are available:<br>
 The project structure is as follows:<br>
 
 Copy code
-├── app.py
-├── data_small
-│   ├── stations.txt
-│   ├── TG_STAID123456.txt
-│   ├── TG_STAID234567.txt
-│   └── TG_STAID345678.txt
-├── README.md
-├── requirements.txt
-└── templates
-    ├── contact_us.html
-    ├── home.html
-    └── store.html
-    
+├── main.py <br>
+├── data_small <br>
+│   ├── stations.txt <br>
+│   ├── TG_STAID123456.txt <br>
+│   ├── TG_STAID234567.txt <br>
+│   └── TG_STAID345678.txt <br>
+├── README.md <br>
+├── requirements.txt <br>
+└── templates <br>
+    ├── contact_us.html <br>
+    ├── home.html <br>
+    └── store.html <br>
+
 main.py - The main Flask application file.<br>
 data_small/ - Directory that contains weather data for different stations.<br>
 templates/ - Directory that contains the HTML templates used to render the pages.<br>
