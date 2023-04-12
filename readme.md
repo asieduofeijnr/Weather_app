@@ -24,7 +24,7 @@ The following endpoints are available:<br>
 # 📂 Project Structure
 The project structure is as follows:<br>
 
-Copy code
+Copy code <br>
 ├── main.py <br>
 ├── data_small <br>
 │   ├── stations.txt <br>
