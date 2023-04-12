@@ -27,3 +27,4 @@ The project structure is as follows:<br>
 main.py - The main Flask application file.<br>
 data_small/ - Directory that contains weather data for different stations.<br>
 templates/ - Directory that contains the HTML templates used to render the pages.<br>
+<br>
